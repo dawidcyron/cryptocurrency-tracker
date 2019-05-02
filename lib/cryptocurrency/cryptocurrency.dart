@@ -20,5 +20,19 @@ class Cryptocurrency {
     this.changePtcDay,
     this.imageUrl
   });
+
+  factory Cryptocurrency.fromJson(Map<String, dynamic> json) {
+    return Cryptocurrency(
+      type: json['TYPE'],
+      fromSymbol: json['FROMSYMBOL'],
+      price: (json['PRICE']*100).round()/100,
+      lastUpdate: json['LASTUPDATE'],
+      openDay: json['OPENDAY'],
+      highDay: json['HIGHDAY'],
+      lowDay: json['LOWDAY'],
+      changePtcDay: (double.parse(json['CHANGEPTCDAY'])*100).round()/100,
+      imageUrl: json['IMAGEURL']
+    );
+  }
   
 }
