@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:cryptocurrency/cryptocurrency/cryptocurrency.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 
 class CryptocurrencyList extends State < ShowCryptocurrencyList > {
   List cryptocurrencies = List();
@@ -30,4 +34,18 @@ class CryptocurrencyList extends State < ShowCryptocurrencyList > {
 class ShowCryptocurrencyList extends StatefulWidget {
   @override
   State createState() => CryptocurrencyList();
+}
+
+Future<List<Cryptocurrency>> fetchCryptocurrency() async {
+  final response = await http.get("http://ec2-34-245-150-251.eu-west-1.compute.amazonaws.com/api");
+  if(response.statusCode == 200) {
+    return compute(parseCryptocurrencyFromResponseBody, response.body);
+  } else {
+    throw Exception("Failed to load cryptocurrencies");
+  }
+} 
+
+List<Cryptocurrency> parseCryptocurrencyFromResponseBody(String responseBody) {
+  final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
+  return parsed.map<Cryptocurrency>((json) => Cryptocurrency.fromJson(json)).toList();
 }
