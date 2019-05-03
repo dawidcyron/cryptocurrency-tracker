@@ -1,16 +1,38 @@
-# cryptocurrency
+<p align="middle"><img src="./logo.png" width="200px"></p>
 
-A new Flutter project.
+<h1 style="text-align: center">Cryptocurrency Tracker</h1>
 
-## Getting Started
+<h4 style="text-align: center"> Simple application for displaying cryptocurrency data, provided by <a href="">cryptocurrency-data-server</a></h4>
 
-This project is a starting point for a Flutter application.
+## Technologies used
 
-A few resources to get you started if this is your first Flutter project:
+* Dart
+* Flutter
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+## Installation
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+#### Prequisites:
+
+- Git
+- Flutter
+- Phone connected to computer with enabled developer mode
+
+#### The instructions below will help you get a working copy of the application on your phone (Android):
+
+````
+# Clone the repository
+git clone github.com/dawidcyron/cryptocurrency-tracker.git
+
+# Navigate into repository
+cd cryptocurrency-tracker
+
+# Install the app
+flutter install
+````
+
+
+
+#### 
+
+
+
