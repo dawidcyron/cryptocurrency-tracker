@@ -23,11 +23,14 @@ class CryptocurrencyList extends State < ShowCryptocurrencyList > {
         future: fetchCryptocurrency(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                snapshot.error.toString(),
-                style: TextStyle(color: Colors.white),
-              )
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+              child: Center(
+                child: Text(
+                  "Something went wrong. Please, make sure that Internet connection is available.",
+                  style: TextStyle(color: Colors.white),
+                )
+              ),
             );
           }
           return snapshot.hasData

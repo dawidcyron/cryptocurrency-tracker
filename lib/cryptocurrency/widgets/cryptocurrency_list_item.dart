@@ -1,6 +1,7 @@
 import 'package:cryptocurrency/cryptocurrency/cryptocurrency.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 
 Card _cryptocurrencyListItem(Cryptocurrency cryptocurrency) {
@@ -41,13 +42,24 @@ Card _cryptocurrencyListItem(Cryptocurrency cryptocurrency) {
             color: cryptocurrency.changePtcDay < 0 ? Colors.red : Colors.green
           ),
         ),
-        trailing: Text(
-          cryptocurrency.price.toString() + " \$",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          )
-        ),
+        trailing: Column(
+          children: <Widget>[
+            Text(
+              cryptocurrency.price.toString() + " \$",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              )
+            ),
+            Text(
+              timeago.format(DateTime.fromMillisecondsSinceEpoch(int.parse(cryptocurrency.lastUpdate)*1000)),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          ],
+        )
       ),
     ),
   );
