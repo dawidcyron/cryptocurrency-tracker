@@ -30,7 +30,7 @@ class Cryptocurrency {
       openDay: json['OPENDAY'],
       highDay: json['HIGHDAY'],
       lowDay: json['LOWDAY'],
-      changePtcDay: (double.parse(json['CHANGEPTCDAY'])*100).round()/100,
+      changePtcDay: (double.parse(json['CHANGEPCTDAY'])*100).round()/100,
       imageUrl: json['IMAGEURL']
     );
   }

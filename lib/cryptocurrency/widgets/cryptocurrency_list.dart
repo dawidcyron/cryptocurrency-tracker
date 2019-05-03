@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cryptocurrency/cryptocurrency/cryptocurrency.dart';
+import 'package:cryptocurrency/cryptocurrency/widgets/cryptocurrency_list_item.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,9 +22,9 @@ class CryptocurrencyList extends State < ShowCryptocurrencyList > {
       body: FutureBuilder<List<Cryptocurrency>>(
         future: fetchCryptocurrency(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
+          if (snapshot.hasError) Text(snapshot.error);
           return snapshot.hasData
-          ? Text("Has data")
+          ? CryptocurrencyListItemGenerator(cryptocurrencies: snapshot.data,)
           : Text("No data present");
         },
       )
