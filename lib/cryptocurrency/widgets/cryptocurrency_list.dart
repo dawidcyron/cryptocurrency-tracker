@@ -22,10 +22,17 @@ class CryptocurrencyList extends State < ShowCryptocurrencyList > {
       body: FutureBuilder<List<Cryptocurrency>>(
         future: fetchCryptocurrency(),
         builder: (context, snapshot) {
-          if (snapshot.hasError) Text(snapshot.error);
+          if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                snapshot.error.toString(),
+                style: TextStyle(color: Colors.white),
+              )
+            );
+          }
           return snapshot.hasData
           ? CryptocurrencyListItemGenerator(cryptocurrencies: snapshot.data,)
-          : Text("No data present");
+          : Center(child: CircularProgressIndicator(value: null));
         },
       )
     );
